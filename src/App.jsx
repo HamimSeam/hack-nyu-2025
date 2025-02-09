@@ -3,6 +3,32 @@ import "./App.css";
 import RestrictionSelector from "./components/RestrictionSelector/RestrictionSelector";
 import MealList from "./components/MealList/MealList.jsx";
 
+
+let foods = [];
+
+async function addFoods() {
+  for (let i = 0; i < 26; i++) {
+    const alphabet = "abcdefghijklmnopqrstuvwxyz"
+    const apiUrl = `https://www.themealdb.com/api/json/v1/1/search.php?f=${alphabet[i]}`;
+
+    const response = await fetch(apiUrl);
+    const data = await response.json();
+    if (!data.meals) continue;
+    data.meals.forEach(meal => {
+      let food = {};
+      if (meal) {
+        food = { id: meal["idMeal"], name: meal["strMeal"], img: meal["strMealThumb"] }
+      }
+      foods.push(food);
+    });
+
+  }
+}
+
+addFoods();
+
+// console.log(foods);
+
 function App() {
   const restrictions = {
     religious: ["halal", "kosher"],
@@ -10,21 +36,8 @@ function App() {
   };
 
   const [selected, setSelected] = useState([]);
-  const [filteredMeals, setFilteredMeals] = useState([
-    {
-      id: 1,
-      name: "Vietnamese Beef Pho",
-      description: "Just some good old VBF.",
-      img: "https://www.recipetineats.com/tachyon/2019/04/Beef-Pho_6.jpg?resize=900%2C1260&zoom=0.72",
-    },
-    {
-      id: 2,
-      name: "Biryani",
-      description: "dinga dinga dinga dinga",
-      img: "https://ministryofcurry.com/wp-content/uploads/2024/06/chicken-biryani.jpg",
-    },
-  ]);
-
+  const [filteredMeals, setFilteredMeals] = useState(foods);
+  console.log(filteredMeals);
   function updateSelectedRestrictions(newRestrictions) {
     setSelected(newRestrictions);
   }
@@ -54,3 +67,4 @@ function App() {
 }
 
 export default App;
+
