@@ -9,29 +9,31 @@ function RestrictionSelector({ restrictions, updateSelectedRestrictions }) {
       if (input.checked) newRestrictions.push(input.name);
     });
 
-    console.log(newRestrictions);
     updateSelectedRestrictions(newRestrictions);
   }
 
   return (
     <form className="restriction-selector" onSubmit={handleSubmit}>
-      {Object.entries(restrictions).map(([category, options]) => (
-        <div key={category}>
-          <h3>{category}</h3>
-          {options.map((option) => (
-            <div key={option}>
-              <input
-                id={option + "-checkbox"}
-                name={option}
-                type="checkbox"
-              ></input>
-              <label htmlFor={option + "-checkbox"}>{option}</label>
-              <br />
-            </div>
-          ))}
-        </div>
-      ))}
-      <button type="Submit">Submit</button>
+      <div className="options">
+        {Object.entries(restrictions).map(([category, options]) => (
+          <div key={category}>
+            <h3 className="category">{category}</h3>
+            {options.map((option) => (
+              <div key={option} className="option">
+                <input
+                  id={option + "-checkbox"}
+                  name={option}
+                  type="checkbox"
+                ></input>
+                <label htmlFor={option + "-checkbox"}>{option}</label>
+              </div>
+            ))}
+          </div>
+        ))}
+      </div>
+      <div className="apply-filters-container">
+        <button type="submit">Apply Filters</button>
+      </div>
     </form>
   );
 }

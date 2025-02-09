@@ -1,0 +1,18 @@
+.meal-list {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+}
+
+.meal-preview {
+    border-radius: 5px;
+    background-color: #A7C957;
+    padding: 10px;
+    margin: 30px;
+}
+
+.meal-preview-img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+}
+

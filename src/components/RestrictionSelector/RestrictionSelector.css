@@ -1,3 +1,20 @@
 .restriction-selector {
-    background-color: aquamarine;
+    border: 3px solid cadetblue;
+    border-radius: 10px;
+    padding: 10px;
+    background-color: rgb(199, 234, 223);
+}
+
+.restriction-selector .apply-filters-container {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.restriction-selector .options {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr)
+} 
+
+.restriction-selector .category {
+    font-family: sans-serif;
 }

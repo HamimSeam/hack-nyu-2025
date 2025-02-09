@@ -1,0 +1,24 @@
+body, html {
+    margin: 0;
+    padding: 0;
+}
+
+main {
+    margin: 10px;
+}
+
+body {
+    background-color: rgb(253, 240, 221);
+}
+
+header {
+    background-color: #A7C957;
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-size: 2.5rem;
+}
